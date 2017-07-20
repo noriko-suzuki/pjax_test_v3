@@ -1,0 +1,52 @@
+.l-body{
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.main-container{
+  width: 100vw;
+  height: 100vh;
+  color: $color-white;
+  text-align: center;
+  transform: translateY(-15%);
+  position: absolute;
+  top:50%;
+
+  h1{
+    @include font-size(48);
+    letter-spacing: 0.2em;
+  }
+
+  p{
+    width:28%;
+    height: 60px;
+    margin: 0 auto;
+    line-height: 60px;
+  }
+}
+
+#page01{
+  &.l-body{
+    background: $color-page01;
+
+    .btn{
+      &:hover{
+        color: $color-page01;
+      }
+    }
+  }
+}
+
+
+#page02{
+  &.l-body{
+    background: $color-page02;
+
+    .btn{
+      &:hover{
+        color: $color-page02;
+      }
+    }
+  }
+}

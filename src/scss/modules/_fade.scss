@@ -1,0 +1,13 @@
+.fadeOut {
+    animation: fadeOut .6s $easeInQuad both;
+}
+.fadeIn {
+    animation: fadeIn .6s $easeInQuad both;
+}
+
+@keyframes fadeOut {
+	to { opacity: 0; -webkit-transform: scale(1.1); transform: scale(1.1); }
+}
+@keyframes fadeIn {
+	from { opacity: 0; -webkit-transform: scale(0.9); transform: scale(0.9); }
+}

@@ -1,0 +1,40 @@
+{
+  "name": "pjax_test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cinra/nutas.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cinra/nutas/issues"
+  },
+  "homepage": "https://github.com/cinra/nutas#readme",
+  "devDependencies": {
+    "browser-sync": "^2.18.12",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-notify": "^3.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0",
+    "sass-glob-importer": "^1.0.1"
+  },
+  "dependencies": {
+    "ajax": "0.0.4",
+    "imagesloaded": "^4.1.2",
+    "jquery": "^3.2.1",
+    "jquery-easing": "0.0.1",
+    "jquery-pjax": "^2.0.1",
+    "jquery-scrollify": "^1.0.14",
+    "pjax": "^0.2.4",
+    "waypoints": "^4.0.1"
+  }
+}
