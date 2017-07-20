@@ -1,23 +1,25 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var plumber = require('gulp-plumber');
-var notify  = require('gulp-notify');
-var globImporter = require('sass-glob-importer');
-var autoprefixer = require('gulp-autoprefixer');
-var BrowserSync = require('browser-sync');
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
+import gulp from 'gulp';
+import sass from 'gulp-sass';
+import plumber from 'gulp-plumber';
+import notify  from 'gulp-notify';
+import globImporter from 'sass-glob-importer';
+import autoprefixer from 'gulp-autoprefixer';
+import BrowserSync from 'browser-sync';
+import concat from 'gulp-concat';
+import uglify from 'gulp-uglify';
 
-var browserSync = BrowserSync.create();
+import browserSync from 'browser-sync';
+import browserify from 'browserify';
+import babelify from 'babelify';
 
 
-gulp.task('html', function() {
+gulp.task('html', () => {
   gulp.src('src/**/*.html')
     .pipe(gulp.dest('dist'))
     .pipe(browserSync.stream());
 });
 
-gulp.task('sass', function() {
+gulp.task('sass', () => {
   gulp.src('src/scss/**/*.scss')
 
     .pipe(plumber({
@@ -33,17 +35,36 @@ gulp.task('sass', function() {
     .pipe(browserSync.stream());
 });
 
-gulp.task('js', function() {
+gulp.task('js', () => {
   gulp.src([
       'src/js/libs/jquery.js',
       'src/js/libs/jquery.easing.1.3.js',
-      // 'src/js/libs/jquery.pjax.js',
-      'src/js/libs/pjax-api.js',
+      'src/js/libs/jquery.pjax.js',
       'src/js/libs/jquery.scrollify.js',
       'src/js/libs/jquery.waypoints.js',
       'src/js/libs/imagesloaded.pkgd.js',
       'src/js/index.js',
     ])
+    return browserify({
+        'entries': ['src/js/index.js'],
+        'debug': true,
+        'transform': [
+            babelify.configure({
+                'presets': ['es2015', 'react']
+            })
+        ]
+    })
+    .bundle()
+    // .on('error', function () {
+    //     var args = Array.prototype.slice.call(arguments);
+    //
+    //     plugins().notify.onError({
+    //         'title': 'Compile Error',
+    //         'message': '<%= error.message %>'
+    //     }).apply(this, args);
+    //
+    //     this.emit('end');
+    // })
     .pipe(plumber())
     .pipe(concat('bundle.js'))
     .pipe(uglify())
@@ -51,13 +72,13 @@ gulp.task('js', function() {
     .pipe(browserSync.stream());
 });
 
-gulp.task('img', function() {
+gulp.task('img', () => {
   gulp.src('src/img/**/*.{png,jpg,svg,gif}')
     .pipe(gulp.dest('dist/img'))
     .pipe(browserSync.stream());
 });
 
-gulp.task('font', function() {
+gulp.task('font', () => {
   gulp.src('src/fonts/**/*.{eot,svg,ttf,woff}')
     .pipe(gulp.dest('dist/fonts'))
     .pipe(browserSync.stream());
@@ -67,13 +88,13 @@ gulp.task('browser-sync', [
     'html',
     'sass',
     'js'
-  ], function() {
+  ], () => {
   browserSync.init({
     server: 'dist/'
   });
 });
 
-gulp.task('watch', ['sass'], function () {
+gulp.task('watch', ['sass'], () => {
   gulp.watch('src/**/*.html', ['html']);
   gulp.watch('src/scss/**/*.scss', ['sass']);
   gulp.watch('src/js/**/*.js', ['js']);

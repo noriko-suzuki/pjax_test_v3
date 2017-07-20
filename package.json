@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "watchify -t babelify ./src/app.js -o ./dist/build.js"
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,12 @@
   },
   "homepage": "https://github.com/cinra/nutas#readme",
   "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babelify": "^7.3.0",
     "browser-sync": "^2.18.12",
+    "browserify": "^14.4.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
     "gulp-concat": "^2.6.1",
@@ -25,7 +30,9 @@
     "gulp-plumber": "^1.1.0",
     "gulp-sass": "^3.1.0",
     "gulp-uglify": "^3.0.0",
-    "sass-glob-importer": "^1.0.1"
+    "sass-glob-importer": "^1.0.1",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.9.0"
   },
   "dependencies": {
     "ajax": "0.0.4",
@@ -35,6 +42,8 @@
     "jquery-pjax": "^2.0.1",
     "jquery-scrollify": "^1.0.14",
     "pjax": "^0.2.4",
+    "pjax-api": "^3.14.0",
+    "spica": "0.0.98",
     "waypoints": "^4.0.1"
   }
 }
